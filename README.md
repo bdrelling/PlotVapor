@@ -1,2 +1,46 @@
 # PlotVapor
-A library for easily bridging Plot into Vapor.
+
+**PlotVapor** is a small package that allows easily rendering [Plot](https://github.com/JohnSundell/Plot)-generated HTML within the  [Vapor](https://github.com/vapor/vapor) server-side Swift web framework.
+
+## Usage
+
+Fortunately, usage is straight-forward as this library only adds a few extension methods to keep things really simple.
+
+Below, we add a new route for the `/home` path within the `configureRoutes(_:)` method and render a sample `HTML` object that doesn't do anything fancy.
+
+```swift
+func configureRoutes(_ app: Application) throws {
+    app.get("home") { req -> EventLoopFuture<View> in
+        let html = HTML(
+            .head(
+                .title("My website"),
+                .stylesheet("styles.css")
+            ),
+            .body(
+                .div(
+                    .h1("My website"),
+                    .p("Writing HTML in Swift is pretty great!")
+                )
+            )
+        )
+        
+        return req.plot.render(html)
+    }
+}
+```
+
+### Minification
+
+By default, all `HTML` is minified before it is rendered. To modify this behavior, use the `identedBy` parameter to pass an `Indentation.Kind`. 
+
+```swift
+func configureRoutes(_ app: Application) throws {
+    app.get("home") { req -> EventLoopFuture<View> in
+        let html = HTML(
+            // elements, etc.
+        )
+        
+        return req.plot.render(html, indentedBy: .spaces(2))
+    }
+}
+```
