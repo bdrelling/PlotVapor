@@ -4,10 +4,10 @@ import Plot
 
 public protocol Page: Renderable {
     var title: String { get }
-    var content: Component { get }
     
     var head: Node<HTML.DocumentContext> { get }
     var body: Node<HTML.DocumentContext> { get }
+    var content: Component { get }
 
     func toHTML() -> HTML
 }

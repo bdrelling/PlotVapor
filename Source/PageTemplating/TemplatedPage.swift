@@ -6,14 +6,14 @@ public protocol TemplatedPage: Page {
 
 public extension TemplatedPage {
     var head: Node<HTML.DocumentContext> {
-        Template.self.init().head(with: self)
+        Template.head(with: self)
     }
     
     var body: Node<HTML.DocumentContext> {
-        Template.self.init().body(with: self)
+        Template.body(with: self)
     }
     
     func toHTML() -> HTML {
-        Template.self.init().toHTML(with: self)
+        Template.toHTML(with: self)
     }
 }
