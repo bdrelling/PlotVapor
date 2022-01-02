@@ -4,6 +4,8 @@
 
 This package only adds a small bridging layer that allows `Plot` to hook into `Vapor`, which keeps this library extremely lightweight. Usage of this library mirrors [LeafKit](https://github.com/vapor/leaf-kit)'s [LeafRender](https://github.com/vapor/leaf-kit/blob/main/Sources/LeafKit/LeafRenderer.swift) class for additional familiarity.
 
+> :warning: The code in this library has been provided as-is. It may lack the documentation, stability, and functionality necessary to support external use. While we work on improving this codebase, use this library at your own risk and please reach out if you have any questions or feedback.
+
 **Before continuing, you should review the [Plot](https://github.com/JohnSundell/Plot) README and have a solid understanding of how the library works.** 
 
 ## Usage
@@ -31,7 +33,7 @@ func configureRoutes(_ app: Application) throws {
 }
 ```
 
-To keep your routing logic clean, this package also includes the `Page` and `PageTemplate` protocols.
+Since nobody wants a massive routing file in practice, this library also provides the `Page` and `PageTemplate` protocols to help with keeping the codebase organized and maintainable. 
 
 ### Page
 
@@ -62,7 +64,7 @@ func configureRoutes(_ app: Application) throws {
 
 The example above will only render a simple page with no styling, which is impractical for most use cases. As such, when you inevitably need to modify the `<head>` element, simply override the `head` property of `Page`, like so.
 
-_This example will render an HTML page identical to the first snippet in this README._
+_The following example will render an HTML page identical to the first snippet in this README._
 
 ```swift
 struct MyPage: Page {
@@ -101,7 +103,7 @@ struct MyPage: Page {
 
 ```
 
-:warning: The reason the `head`, `body`, and `content` properties are all handled differently is due to the fact that, at time of writing, `Plot` doesn't provide usage of the `Component` syntax for `<head>` and `<body>` elements. For more information, see the [Components](https://github.com/JohnSundell/Plot#components) section of the `Plot` README.
+> :warning: The reason the `head`, `body`, and `content` properties are all handled differently is due to the fact that, at time of writing, `Plot` doesn't provide usage of the `Component` syntax for `<head>` and `<body>` elements. For more information, see the [Components](https://github.com/JohnSundell/Plot#components) section of the `Plot` README.
 
 ### PageTemplate
 
