@@ -4,7 +4,7 @@
 
 This package only adds a small bridging layer that allows `Plot` to hook into `Vapor`, which keeps this library extremely lightweight. Usage of this library mirrors [LeafKit](https://github.com/vapor/leaf-kit)'s [LeafRender](https://github.com/vapor/leaf-kit/blob/main/Sources/LeafKit/LeafRenderer.swift) class for additional familiarity.
 
-> :warning: The code in this library has been provided as-is. It may lack the documentation, stability, and functionality necessary to support external use. While we work on improving this codebase, use this library at your own risk and please reach out if you have any questions or feedback.
+> :warning: The code in this library has been provided as-is and is intended primarily as a reference for educational purposes. It may lack the documentation, stability, and/or functionality necessary to support usage in production applications. As such, I _highly_ recommend simply copying files from this codebase directly rather than pulling it in as a dependency to avoid any breaking changes impacting your workflow. Feel free to open an issue/PR or reach out if you have any questions or feedback.
 
 **Before continuing, you should review the [Plot](https://github.com/JohnSundell/Plot) README and have a solid understanding of how the library works.** 
 
