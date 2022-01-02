@@ -31,7 +31,7 @@ func configureRoutes(_ app: Application) throws {
 
 ### Minification
 
-By default, all `HTML` is minified before it is rendered. To modify this behavior, use the `identedBy` parameter to pass an `Indentation.Kind`. 
+By default, all `HTML` is minified before it is rendered. To modify this behavior, use the `indentedBy` parameter to pass an `Indentation.Kind`. 
 
 ```swift
 func configureRoutes(_ app: Application) throws {
@@ -44,3 +44,21 @@ func configureRoutes(_ app: Application) throws {
     }
 }
 ```
+
+### Swift Concurrency
+
+`PlotVapor` is also compatible with Swift 5.5's new async/await functionality.
+
+```swift
+func configureRoutes(_ app: Application) throws {
+    app.get("home") { req async throws -> View in
+        let html = HTML(
+            // elements, etc.
+        )
+        
+        return req.plot.render(html, indentedBy: .spaces(2))
+    }
+}
+```
+
+For more information on using Swift concurrency within Vapor, check out the [Vapor docs](https://docs.vapor.codes/4.0/async/). 
