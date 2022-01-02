@@ -1,10 +1,12 @@
 # PlotVapor
 
-**PlotVapor** is a small package that allows easily rendering [Plot](https://github.com/JohnSundell/Plot)-generated HTML within the  [Vapor](https://github.com/vapor/vapor) server-side Swift web framework.
+**PlotVapor** is a small package that allows easy rendering of [Plot](https://github.com/JohnSundell/Plot)-generated HTML within the  [Vapor](https://github.com/vapor/vapor) server-side Swift web framework.
+
+This package only adds a small bridging layer that allows `Plot` to hook into `Vapor`, which keeps this library extremely lightweight. Usage of this library mirrors [LeafKit](https://github.com/vapor/leaf-kit)'s [LeafRender](https://github.com/vapor/leaf-kit/blob/main/Sources/LeafKit/LeafRenderer.swift) class for additional familiarity.
+
+**Before continuing, you should review the [Plot](https://github.com/JohnSundell/Plot) README and have a solid understanding of how the library works.** 
 
 ## Usage
-
-Usage is straight-forward as this library only adds a few extension methods on top of `Plot` to allow it to hook into `Vapor`.
 
 We can add a new route for the `/home` path within the `configureRoutes(_:)` method and render a sample `HTML` object that doesn't do anything fancy.
 
@@ -29,9 +31,9 @@ func configureRoutes(_ app: Application) throws {
 }
 ```
 
-To keep your routing logic clean, this package also include the `Page` and `PageTemplate` protocols.
+To keep your routing logic clean, this package also includes the `Page` and `PageTemplate` protocols.
 
-### Page and PageTemplate
+### Page
 
 Conform to the `Page` protocol to quickly and easily define a page. 
 
@@ -48,7 +50,19 @@ struct MyPage: Page {
 }
 ```
 
-The example above will only render a simple page with no styling, which is impractical for most use cases. As such, when you inevitably need to modify the `<head>` element, simply override the `head` property of `Page`, like so. This example will render an HTML page identical to the first snippet in this README.
+Then, render it wherever you define your routes.
+
+```swift
+func configureRoutes(_ app: Application) throws {
+    app.get("home") { req -> EventLoopFuture<View> in
+        return req.plot.render(MyPage())
+    }
+}
+```
+
+The example above will only render a simple page with no styling, which is impractical for most use cases. As such, when you inevitably need to modify the `<head>` element, simply override the `head` property of `Page`, like so.
+
+_This example will render an HTML page identical to the first snippet in this README._
 
 ```swift
 struct MyPage: Page {
