@@ -21,21 +21,21 @@ public final class PlotRenderer {
 // MARK: - Extensions
 
 public extension PlotRenderer {
-    func render(_ html: HTML, indentedBy indentationKind: Indentation.Kind? = nil) -> EventLoopFuture<View> {
+    func render(_ renderable: Renderable, indentedBy indentationKind: Indentation.Kind? = nil) -> EventLoopFuture<View> {
         // Convert the HTML String into a Byte Buffer.
-        let buffer = html.toBuffer(indentedBy: indentationKind)
+        let buffer = renderable.toBuffer(indentedBy: indentationKind)
 
         return self.eventLoop.makeSucceededFuture(
             View(data: buffer)
         )
     }
     
-    func render(_ html: HTML, indentedBy indentationKind: Indentation.Kind? = nil) async throws -> View {
-        try await render(html, indentedBy: indentationKind).get()
+    func render(_ renderable: Renderable, indentedBy indentationKind: Indentation.Kind? = nil) async throws -> View {
+        try await render(renderable, indentedBy: indentationKind).get()
     }
 }
 
-private extension HTML {
+private extension Renderable {
     func toBuffer(indentedBy indentationKind: Indentation.Kind? = nil) -> ByteBuffer {
         // Render the HTML into a String.
         let htmlString: String = {
