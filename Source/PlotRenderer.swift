@@ -1,4 +1,4 @@
-// Copyright © 2021 Brian Drelling. All rights reserved.
+// Copyright © 2022 Brian Drelling. All rights reserved.
 
 import Plot
 import Vapor
@@ -12,14 +12,14 @@ import Vapor
 
 public final class PlotRenderer {
     public let eventLoop: EventLoop
-    
+
     public init(eventLoop: EventLoop) {
         self.eventLoop = eventLoop
     }
 }
 
-extension PlotRenderer {
-    public func render(_ html: HTML, indentedBy indentationKind: Indentation.Kind? = nil) -> EventLoopFuture<View> {
+public extension PlotRenderer {
+    func render(_ html: HTML, indentedBy indentationKind: Indentation.Kind? = nil) -> EventLoopFuture<View> {
         // Render the HTML into a String.
         let htmlString: String = {
             if let indentationKind = indentationKind {
@@ -28,14 +28,12 @@ extension PlotRenderer {
                 return html.render()
             }
         }()
-        
+
         // Convert the HTML String into a Byte Buffer.
         let buffer = ByteBuffer(string: htmlString)
-        
+
         return self.eventLoop.makeSucceededFuture(
             View(data: buffer)
         )
     }
 }
-
-
