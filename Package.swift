@@ -20,8 +20,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Plot", package: "Plot"),
                 .product(name: "Vapor", package: "vapor"),
-            ],
-            path: "Source"
+            ]
         ),
     ]
 )
