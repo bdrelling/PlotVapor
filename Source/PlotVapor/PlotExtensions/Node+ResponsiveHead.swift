@@ -3,7 +3,7 @@
 import Plot
 
 extension Node where Context == Plot.HTML.DocumentContext {
-    static func responsiveHead(_ nodes: Node<HTML.HeadContext>...) -> Plot.Node<Context> {
+    public static func responsiveHead(_ nodes: Node<HTML.HeadContext>...) -> Plot.Node<Context> {
         let nodes: [Node<HTML.HeadContext>] = [
             .meta(
                 .charset(.utf8)
