@@ -4,6 +4,7 @@ import Plot
 
 public protocol Page: Renderable {
     var title: String { get }
+    var themeColor: String { get }
     
     var head: Node<HTML.DocumentContext> { get }
     var body: Node<HTML.DocumentContext> { get }
@@ -17,7 +18,12 @@ public protocol Page: Renderable {
 public extension Page {
     var head: Node<HTML.DocumentContext> {
         .head(
-            .title(self.title)
+            .title(self.title),
+            .meta(
+                .name("theme-color"),
+                .content(self.themeColor),
+                .attribute(named: "media", value: "(prefers-color-scheme: dark)")
+            )
         )
     }
     

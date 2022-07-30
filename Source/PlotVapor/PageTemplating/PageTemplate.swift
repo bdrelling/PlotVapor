@@ -23,7 +23,12 @@ public extension PageTemplate {
 public struct DefaultPageTemplate: PageTemplate {
     public static func head(with page: Page) -> Node<HTML.DocumentContext> {
         .head(
-            .title(page.title)
+            .title(page.title),
+            .meta(
+                .name("theme-color"),
+                .content(page.themeColor),
+                .attribute(named: "media", value: "(prefers-color-scheme: dark)")
+            )
         )
     }
 
