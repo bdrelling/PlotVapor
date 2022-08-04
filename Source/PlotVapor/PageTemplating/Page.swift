@@ -4,7 +4,7 @@ import Plot
 
 public protocol Page: Renderable {
     var title: String { get }
-    var themeColor: String { get }
+    var themeColor: String? { get }
     
     var head: Node<HTML.DocumentContext> { get }
     var body: Node<HTML.DocumentContext> { get }
@@ -16,6 +16,10 @@ public protocol Page: Renderable {
 // MARK: - Extensions
 
 public extension Page {
+    var themeColor: String? {
+        nil
+    }
+
     var head: Node<HTML.DocumentContext> {
         .head(
             .title(self.title),
