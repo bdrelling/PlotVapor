@@ -10,31 +10,18 @@ public protocol PageTemplate {
 // MARK: - Extensions
 
 public extension PageTemplate {
+    static func head(with page: Page) -> Node<HTML.DocumentContext> {
+        page.head
+    }
+
+    static func body(with page: Page) -> Node<HTML.DocumentContext> {
+        page.body
+    }
+    
     static func toHTML(with page: Page) -> HTML {
         .init(
             self.head(with: page),
             self.body(with: page)
-        )
-    }
-}
-
-// MARK: - Supporting Types
-
-public struct DefaultPageTemplate: PageTemplate {
-    public static func head(with page: Page) -> Node<HTML.DocumentContext> {
-        .head(
-            .title(page.title),
-            .meta(
-                .name("theme-color"),
-                .content(page.themeColor),
-                .attribute(named: "media", value: "(prefers-color-scheme: dark)")
-            )
-        )
-    }
-
-    public static func body(with page: Page) -> Node<HTML.DocumentContext> {
-        .body(
-            .component(page.content)
         )
     }
 }

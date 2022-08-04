@@ -21,14 +21,17 @@ public extension Page {
     }
 
     var head: Node<HTML.DocumentContext> {
-        .head(
-            .title(self.title),
-            .meta(
-                .name("theme-color"),
-                .content(self.themeColor),
-                .attribute(named: "media", value: "(prefers-color-scheme: dark)")
+        if let themeColor = self.themeColor {
+            return .head(
+                .title(self.title),
+                .meta(
+                    .name("theme-color"),
+                    .content(themeColor)
+                )
             )
-        )
+        } else {
+            return .head(.title(self.title))
+        }
     }
     
     var body: Node<HTML.DocumentContext> {
