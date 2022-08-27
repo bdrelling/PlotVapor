@@ -9,7 +9,7 @@ on:
 
 jobs:
   swift_test:
-    uses: bdrelling/workflows/.github/workflows/swift_test_vapor_package.yml@main
+    uses: bdrelling/ci/.github/workflows/swift_test_vapor_package.yml@main
     with:
       scheme: PlotVapor
       subcommand: build
