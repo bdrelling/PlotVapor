@@ -1,6 +1,6 @@
 # PlotVapor
 
-[![CI Status](https://github.com/bdrelling/PlotVapor/actions/workflows/build.yml/badge.svg)](https://github.com/bdrelling/PlotVapor/actions/workflows/build.yml)
+[![CI Status](https://github.com/bdrelling/PlotVapor/actions/workflows/tests.yml/badge.svg)](https://github.com/bdrelling/PlotVapor/actions/workflows/tests.yml)
 [![Latest Release](https://img.shields.io/github/v/tag/bdrelling/PlotVapor?color=blue&label=latest)](https://github.com/bdrelling/PlotVapor/tags)
 [![Swift Compatibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbdrelling%2FPlotVapor%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/bdrelling/PlotVapor)
 [![Platform Compatibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbdrelling%2FPlotVapor%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/bdrelling/PlotVapor)
