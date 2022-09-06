@@ -2,6 +2,8 @@
 
 import Vapor
 
+// TODO: https://github.com/vapor/leaf/blob/main/Sources/Leaf/Request%2BLeaf.swift
+
 public extension Request {
     var plot: PlotRenderer {
         .init(
@@ -9,3 +11,4 @@ public extension Request {
         )
     }
 }
+
