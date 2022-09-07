@@ -5,6 +5,7 @@ import Plot
 public protocol Page: Renderable {
     var title: String { get }
     var themeColor: String? { get }
+    var canonicalURL: String? { get }
 
     var head: Node<HTML.DocumentContext> { get }
     var body: Node<HTML.DocumentContext> { get }
@@ -21,18 +22,26 @@ public extension Page {
         nil
     }
 
+    var canonicalURL: String? {
+        nil
+    }
+
     var head: Node<HTML.DocumentContext> {
-        if let themeColor = self.themeColor {
-            return .head(
-                .title(self.title),
+        .head(
+            .title(self.title),
+            .unwrap(self.canonicalURL) { canonicalURL in
+                .link(
+                    .rel(.canonical),
+                    .href(canonicalURL)
+                )
+            },
+            .unwrap(self.themeColor) { themeColor in
                 .meta(
                     .name("theme-color"),
                     .content(themeColor)
                 )
-            )
-        } else {
-            return .head(.title(self.title))
-        }
+            }
+        )
     }
 
     var body: Node<HTML.DocumentContext> {
