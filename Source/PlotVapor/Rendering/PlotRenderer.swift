@@ -29,9 +29,9 @@ public extension PlotRenderer {
             View(data: buffer)
         )
     }
-    
+
     func render(_ renderable: Renderable, indentedBy indentationKind: Indentation.Kind? = nil) async throws -> View {
-        try await render(renderable, indentedBy: indentationKind).get()
+        try await self.render(renderable, indentedBy: indentationKind).get()
     }
 }
 
