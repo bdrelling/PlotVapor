@@ -5,7 +5,6 @@ import Plot
 public protocol Page: Renderable {
     @ComponentBuilder var head: Component { get }
     @ComponentBuilder var body: Component { get }
-    @ComponentBuilder var scripts: Component { get }
 
     func toHTML() -> HTML
 }
@@ -18,12 +17,7 @@ public extension Page {
     }
 
     func toHTML() -> HTML {
-        HTML {
-            self.head
-        } body: {
-            self.body
-            self.scripts
-        }
+        HTML(head: self.head, body: self.body)
     }
 }
 

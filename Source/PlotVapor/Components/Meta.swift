@@ -17,17 +17,31 @@ public struct Meta: Component {
         )
     }
 
-    public init(name: String? = nil, content: String? = nil, attributes: Attribute<HTML.MetaContext>...) {
+    public init(name: String? = nil, content: String? = nil, attributes: [Attribute<HTML.MetaContext>]) {
         self.name = name
         self.content = content
         self.attributes = attributes
     }
 
-    public init(themeColor: String, colorScheme: String) {
+    public init(name: String? = nil, content: String? = nil, attributes: Attribute<HTML.MetaContext>...) {
+        self.init(
+            name: name,
+            content: content,
+            attributes: attributes
+        )
+    }
+
+    public init(themeColor: String, colorScheme: String? = nil) {
+        var attributes: [Attribute<HTML.MetaContext>] = []
+
+        if let colorScheme = colorScheme {
+            attributes.append(.attribute(named: "media", value: "(prefers-color-scheme: \(colorScheme))"))
+        }
+
         self.init(
             name: "theme-color",
             content: themeColor,
-            attributes: .attribute(named: "media", value: "(prefers-color-scheme: \(colorScheme))")
+            attributes: attributes
         )
     }
 
