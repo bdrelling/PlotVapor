@@ -5,7 +5,10 @@ import PackageDescription
 let package = Package(
     name: "PlotVapor",
     platforms: [
-        .macOS(.v10_15),    // required for Vapor
+        .iOS(.v15),
+        .macOS(.v12),
+        .tvOS(.v15),
+        .watchOS(.v8),
     ],
     products: [
         .library(name: "PlotVapor", targets: ["PlotVapor"]),
