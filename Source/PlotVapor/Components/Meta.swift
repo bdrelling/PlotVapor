@@ -31,20 +31,6 @@ public struct Meta: Component {
         )
     }
 
-    public init(themeColor: String, colorScheme: String? = nil) {
-        var attributes: [Attribute<HTML.MetaContext>] = []
-
-        if let colorScheme = colorScheme {
-            attributes.append(.attribute(named: "media", value: "(prefers-color-scheme: \(colorScheme))"))
-        }
-
-        self.init(
-            name: "theme-color",
-            content: themeColor,
-            attributes: attributes
-        )
-    }
-
     public init(charset: DocumentEncoding) {
         self.init(attributes: .charset(charset))
     }

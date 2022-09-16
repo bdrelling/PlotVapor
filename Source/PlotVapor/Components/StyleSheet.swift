@@ -6,7 +6,7 @@ public struct StyleSheet: Component {
     private let url: String
 
     public var body: Component {
-        HeadLink(self.url, relationship: .stylesheet, type: "text/css")
+        HeadLink(self.url, relationship: .stylesheet, type: .css)
     }
 
     public init(_ url: String) {

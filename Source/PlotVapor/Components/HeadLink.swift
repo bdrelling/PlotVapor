@@ -1,5 +1,6 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
+import Foundation
 import Plot
 
 public struct HeadLink: Component {
@@ -34,6 +35,5 @@ public struct HeadLink: Component {
 public extension HeadLink {
     enum LinkType: String {
         case css = "text/css"
-        case png = "image/png"
     }
 }
